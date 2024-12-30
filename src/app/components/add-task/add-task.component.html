@@ -1,0 +1,105 @@
+<h1 mat-dialog-title>{{ isEdit ? 'Edit Task' : 'Add Task' }}</h1>
+
+<div mat-dialog-content>
+  <!-- Entity Name Field -->
+  <mat-form-field appearance="fill">
+    <mat-label>Entity Name</mat-label>
+    <input
+      matInput
+      [(ngModel)]="task.entityName"
+      placeholder="Enter entity name"
+      title="Entity Name"
+      required
+      maxlength="100"
+    />
+    <mat-error *ngIf="!task.entityName">Entity name is required.</mat-error>
+  </mat-form-field>
+
+  <!-- Task Type Field -->
+  <mat-form-field appearance="fill">
+    <mat-label>Task Type</mat-label>
+    <mat-select [(ngModel)]="task.taskType" title="Task Type" required>
+      <mat-option value="Call">Call</mat-option>
+      <mat-option value="Meeting">Meeting</mat-option>
+      <mat-option value="Video Call">Video Call</mat-option>
+    </mat-select>
+    <mat-error *ngIf="!task.taskType">Task type is required.</mat-error>
+  </mat-form-field>
+
+  <!-- Date Field -->
+  <mat-form-field appearance="fill">
+    <mat-label>Date</mat-label>
+    <input
+      matInput
+      type="date"
+      [(ngModel)]="task.date"
+      title="Task Date"
+      required
+    />
+    <mat-error *ngIf="!task.date">Date is required.</mat-error>
+  </mat-form-field>
+
+  <!-- Time Field -->
+  <mat-form-field appearance="fill">
+    <mat-label>Time</mat-label>
+    <input
+      matInput
+      type="time"
+      [(ngModel)]="task.time"
+      title="Task Time"
+      required
+    />
+    <mat-error *ngIf="!task.time">Time is required.</mat-error>
+  </mat-form-field>
+
+  <!-- Contact Person Field -->
+  <mat-form-field appearance="fill">
+    <mat-label>Contact Person</mat-label>
+    <input
+      matInput
+      [(ngModel)]="task.contactPerson"
+      placeholder="Enter contact person"
+      title="Contact Person"
+      required
+      maxlength="100"
+    />
+    <mat-error *ngIf="!task.contactPerson">Contact person is required.</mat-error>
+  </mat-form-field>
+
+  <!-- Note Field -->
+  <mat-form-field appearance="fill">
+    <mat-label>Note</mat-label>
+    <textarea
+      matInput
+      [(ngModel)]="task.note"
+      placeholder="Enter note"
+      title="Task Note"
+      maxlength="200"
+    ></textarea>
+    <mat-hint align="end">Max 200 characters</mat-hint>
+  </mat-form-field>
+
+  <!-- Status Field -->
+  <mat-form-field appearance="fill">
+    <mat-label>Status</mat-label>
+    <mat-select [(ngModel)]="task.status" title="Task Status" required>
+      <mat-option value="Open">Open</mat-option>
+      <mat-option value="In Progress">In Progress</mat-option>
+      <mat-option value="Closed">Closed</mat-option>
+    </mat-select>
+    <mat-error *ngIf="!task.status">Status is required.</mat-error>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="save()"
+    [disabled]="!isFormValid()"
+    title="{{ isEdit ? 'Update Task' : 'Save Task' }}"
+  >
+    {{ isEdit ? 'Update' : 'Save' }}
+  </button>
+</div>

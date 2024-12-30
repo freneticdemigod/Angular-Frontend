@@ -1,0 +1,14 @@
+.mat-elevation-z8 {
+    margin: 16px 0;
+    border-radius: 8px;
+  }
+  
+  .mat-raised-button {
+    background-color: #3f51b5;
+    color: #fff;
+  }
+  
+  .mat-raised-button:hover {
+    background-color: #303f9f;
+  }
+  
